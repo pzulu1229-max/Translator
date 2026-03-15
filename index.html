@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multilingual Translation App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Text Translator</h1>
+        </header>
+
+        <main>
+            <div class="translation-container">
+                <div class="language-row">
+                    <div class="language-selector">
+                        <label for="source-language">From:</label>
+                        <select id="source-language" class="language-dropdown">
+                            <option value="auto" selected>Detect Language</option>
+                            <option value="en">English</option>
+                            <option value="fr">French</option>
+                        </select>
+                    </div>
+
+                    <button id="swap-languages" class="swap-btn" title="Swap languages">
+                        <i class="fas fa-exchange-alt"></i>
+                    </button>
+
+                    <div class="language-selector">
+                        <label for="target-language">To:</label>
+                        <select id="target-language" class="language-dropdown">
+                            <option value="en">English</option>
+                            <option value="fr" selected>French</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="text-areas-row">
+                    <div class="text-container">
+                        <div class="text-header">
+                            <span class="char-counter" id="source-counter">0/500</span>
+                            <div class="action-buttons">
+                                <button class="action-btn" id="speak-source" title="Listen to text">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                                <button class="action-btn" id="copy-source" title="Copy text">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                                <button class="action-btn" id="clear-source" title="Clear text">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <textarea 
+                            id="source-text" 
+                            placeholder="Enter text to translate..." 
+                            maxlength="500"
+                        >Hello, how are you</textarea>
+                    </div>
+                    <div class="text-container">
+                        <div class="text-header">
+                            <span class="char-counter" id="target-counter">0/500</span>
+                            <div class="action-buttons">
+                                <button class="action-btn" id="speak-target" title="Listen to translation">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                                <button class="action-btn" id="copy-target" title="Copy translation">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <textarea 
+                            id="target-text" 
+                            placeholder="Translation will appear here..." 
+                            readonly
+                        ></textarea>
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <button id="translate-btn" class="translate-btn">
+                        Translate
+                    </button>
+                </div>
+                <div id="loading-indicator" class="loading hidden">
+                    <div class="spinner"></div>
+                    <span>Translating...</span>
+                </div>
+
+                <div id="error-message" class="error hidden"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
